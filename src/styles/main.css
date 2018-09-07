@@ -1,0 +1,115 @@
+/* ------------- */
+/* GENERAL STYLE */
+/* ------------- */
+
+/* STRUCTURE */
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #37383C;
+  background-color: #F4F5F7;
+}
+
+.main-title {
+  background-color: white;
+}
+
+/* BUTTONS */
+button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  outline: none;
+}
+
+.main {
+  background-color: #FEC23F;
+  border: 0;
+  color: white;
+  outline: none;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+.main:hover {
+  background: linear-gradient(to right, #FEC23F, #fe9400);
+  box-shadow: rgba(254, 194, 63, 0.8) 0px 0px 15px;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+.back {
+  background-color: #2BBDEE;
+  border: 0;
+  color: white;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+.back:hover {
+  background: linear-gradient(to right, #2BBDEE, #1a8dcb);
+  box-shadow: rgba(43, 189, 238, 0.8) 0px 0px 15px;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+.empty-solid {
+  border: 2px solid #FEC23F;
+  background-color: transparent;
+  color: #FEC23F;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+.empty-solid:hover {
+  background-color: #FEC23F;
+  color: white;
+  box-shadow: rgba(254, 194, 63, 0.8) 0px 0px 15px;
+  -webkit-transition: all 200ms ease-out;
+  -moz-transition: all 200ms ease-out;
+  -o-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+
+/* TITLE */
+h1 {
+  text-align: center;
+  padding: 50px 0;
+}
+
+h1 button {
+  font-size: 0.5em;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-left: 15px;
+}
+
+.mat-form-field {
+  width: 90%;
+}
+
+
+/* BUTTONS */
+.back {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.buttons {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+/* ENTRIES LIST */
+#entries-list {
+  margin-top: 15px;
+}
