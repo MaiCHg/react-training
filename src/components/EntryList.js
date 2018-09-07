@@ -12,10 +12,12 @@ class EntryList extends React.Component {
     this.state = {
       list: Object.values(allornothing)
     }
+
+	this.renderReplies = this.renderReplies.bind(this)
   }
 
   renderReplies(replies) {
-    return replies.map((reply) => {
+    return replies.map(reply => {
         return (
             <div class="entry-body col-12">
 				<button class="back">{ reply }</button>
@@ -27,7 +29,7 @@ class EntryList extends React.Component {
   render() {
     return (
       <div class="row" id="entries-list">
-		{this.state.list.map(function(entry) {
+		{this.state.list.map(entry => {
           return (
 			<div class="col-md-4 col-sm-12">
 			  <div class="entry col-12">
