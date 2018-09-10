@@ -70,7 +70,7 @@ class EntryList extends React.Component {
     }
 
     return (
-	  <Element className="entry col-12" name={entry.id} >
+	  <Element className="selected entry col-12" name={entry.id} >
         <div className="row">
           <div className="entry-header col-12">
             <div className="entry-id">
