@@ -12,10 +12,15 @@ class EntryList extends React.Component {
     super(props);
 
     this.state = {
-      list: Object.values(allornothing)
+      list: Object.values(allornothing),
+	  selectedEntry: ''
     };
 
     this.renderReplies = this.renderReplies.bind(this);
+  }
+
+  getSelectedEntry(id) {
+	  this.setState({ selectedEntry: id });
   }
 
   renderReplies(entry) {
@@ -26,10 +31,72 @@ class EntryList extends React.Component {
     return entry.replies.map((reply, idx) => {
       return (
           <Link to={entry.routes[idx]} spy={true} smooth={true} duration={500} key={idx}>
-			<button className="back">{reply}</button>
+			<button className="back" onClick={ () => {this.getSelectedEntry(entry.routes[idx])}}>{reply}</button>
 		  </Link>
       );
     });
+  }
+
+  getSelectedClass(entry) {
+    if (entry.id !== this.state.selectedEntry) {
+      return (
+		<Element className="entry col-12" name={entry.id} >
+          <div className="row">
+            <div className="entry-header col-12">
+              <div className="entry-id">
+                <span>{entry.id}</span>
+              </div>
+              <p>{entry.text}</p>
+            </div>
+
+			<div className="entry-body col-12">
+			  {this.renderReplies(entry)}
+			</div>
+
+            <div className="entry-manage col-12">
+              <div className="row">
+                <span className="manage-button">
+                  <i className="fas fa-comments" /> Add new answer
+                </span>
+
+                <span className="manage-button">
+                  <i className="fas fa-pencil-alt" /> Modify
+                </span>
+              </div>
+            </div>
+          </div>
+        </Element>
+	  );
+    }
+
+    return (
+	  <Element className="entry col-12" name={entry.id} >
+        <div className="row">
+          <div className="entry-header col-12">
+            <div className="entry-id">
+              <span>{entry.id}</span>
+            </div>
+            <p>{entry.text}</p>
+          </div>
+
+		  <div className="entry-body col-12">
+			{this.renderReplies(entry)}
+		  </div>
+
+          <div className="entry-manage col-12">
+            <div className="row">
+              <span className="manage-button">
+                <i className="fas fa-comments" /> Add new answer
+              </span>
+
+              <span className="manage-button">
+                <i className="fas fa-pencil-alt" /> Modify
+              </span>
+            </div>
+          </div>
+        </div>
+      </Element>
+	);
   }
 
   render() {
@@ -39,32 +106,7 @@ class EntryList extends React.Component {
           function(entry, idx) {
             return (
               <div className="col-md-4 col-sm-12" key={idx}>
-                <Element className="entry col-12" name={entry.id} >
-                  <div className="row">
-                    <div className="entry-header col-12">
-                      <div className="entry-id">
-                        <span>{entry.id}</span>
-                      </div>
-                      <p>{entry.text}</p>
-                    </div>
-
-					<div className="entry-body col-12">
-						{this.renderReplies(entry)}
-					</div>
-
-                    <div className="entry-manage col-12">
-                      <div className="row">
-                        <span className="manage-button">
-                          <i className="fas fa-comments" /> Add new answer
-                        </span>
-
-                        <span className="manage-button">
-                          <i className="fas fa-pencil-alt" /> Modify
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Element>
+                {this.getSelectedClass(entry)}
               </div>
             );
           }.bind(this)
