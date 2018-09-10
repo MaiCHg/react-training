@@ -2,6 +2,9 @@ import React from "react";
 import axios from "axios";
 import style from "../styles/entry.css";
 
+import * as Scroll from 'react-scroll';
+import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 import * as allornothing from "../allornothing.json";
 
 class EntryList extends React.Component {
@@ -15,16 +18,16 @@ class EntryList extends React.Component {
     this.renderReplies = this.renderReplies.bind(this);
   }
 
-  renderReplies(replies) {
-    if (!replies) {
-      return <div />;
+  renderReplies(entry) {
+    if (!entry.replies) {
+      return '';
     }
 
-    return replies.map((reply, idx) => {
+    return entry.replies.map((reply, idx) => {
       return (
-        <div className="entry-body col-12" key={idx}>
-          <button className="back">{reply}</button>
-        </div>
+          <Link to={entry.routes[idx]} spy={true} smooth={true} duration={500} key={idx}>
+			<button className="back">{reply}</button>
+		  </Link>
       );
     });
   }
@@ -36,7 +39,7 @@ class EntryList extends React.Component {
           function(entry, idx) {
             return (
               <div className="col-md-4 col-sm-12" key={idx}>
-                <div className="entry col-12">
+                <Element className="entry col-12" name={entry.id} >
                   <div className="row">
                     <div className="entry-header col-12">
                       <div className="entry-id">
@@ -45,7 +48,9 @@ class EntryList extends React.Component {
                       <p>{entry.text}</p>
                     </div>
 
-                    {this.renderReplies(entry.replies)}
+					<div className="entry-body col-12">
+						{this.renderReplies(entry)}
+					</div>
 
                     <div className="entry-manage col-12">
                       <div className="row">
@@ -59,7 +64,7 @@ class EntryList extends React.Component {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Element>
               </div>
             );
           }.bind(this)
