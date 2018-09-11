@@ -7,6 +7,8 @@ import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } 
 
 import * as allornothing from "../allornothing.json";
 
+import EditReply from "./EditReply";
+
 class EntryList extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,10 @@ class EntryList extends React.Component {
 
   getSelectedEntry(id) {
 	  this.setState({ selectedEntry: id });
+  }
+
+  getEntry(entry) {
+  	  var toEdit = entry;
   }
 
   renderReplies(entry) {
@@ -55,14 +61,14 @@ class EntryList extends React.Component {
 
             <div className="entry-manage col-12">
               <div className="row">
-                <span className="manage-button">
-                  <i className="fas fa-comments" /> Add new answer
-                </span>
+				<span className="manage-button">
+				  <i className="fas fa-comments" /> Add new answer
+				</span>
 
-                <span className="manage-button">
-                  <i className="fas fa-pencil-alt" /> Modify
-                </span>
-              </div>
+				<span className="manage-button" data-toggle="modal" data-target="#replyModal" onClick={ () => {this.getSelectedEntry(entry.id)}}>
+				  <i className="fas fa-pencil-alt" /> Modify
+				</span>
+			  </div>
             </div>
           </div>
         </Element>
@@ -85,14 +91,14 @@ class EntryList extends React.Component {
 
           <div className="entry-manage col-12">
             <div className="row">
-              <span className="manage-button">
-                <i className="fas fa-comments" /> Add new answer
-              </span>
+			  <span className="manage-button">
+			    <i className="fas fa-comments" /> Add new answer
+			  </span>
 
-              <span className="manage-button">
-                <i className="fas fa-pencil-alt" /> Modify
-              </span>
-            </div>
+			  <span className="manage-button" data-toggle="modal" data-target="#replyModal" onClick={ () => {this.getSelectedEntry(entry.id)}}>
+			    <i className="fas fa-pencil-alt" /> Modify
+			  </span>
+			</div>
           </div>
         </div>
       </Element>
@@ -111,6 +117,7 @@ class EntryList extends React.Component {
             );
           }.bind(this)
         )}
+		<EditReply selectedEntry={this.state.selectedEntry} />
       </div>
     );
   }
