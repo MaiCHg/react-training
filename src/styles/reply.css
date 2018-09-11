@@ -18,8 +18,17 @@
   font-weight: bold;
 }
 
+.reply {
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 30px;
+}
+
 .delete-link {
   cursor: pointer;
+  color: #2BBDEE;
+  text-align: right;
+  padding-top: 15px;
 }
 
 .finale-button {

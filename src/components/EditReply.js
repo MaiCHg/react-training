@@ -6,6 +6,9 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
 
 import style from "../styles/reply.css";
 
@@ -28,71 +31,73 @@ class EditReply extends React.Component {
 
   render () {
     return (
-	  <div className="modal fade" id="replyModal" tabIndex="-1" role="dialog" aria-labelledby="reply" aria-hidden="true">
-		<div className="modal-dialog" role="document">
-		  <div className="modal-content col-12">
-			<div className="modal-entry-id">
-			  <span>{this.props.selectedEntry}</span>
-			</div>
+	  <div>
+	  <DialogTitle id="alert-dialog-title">
+		<div className="modal-entry-id">
+		  <span>{this.props.selectedEntry}</span>
+		</div>
+	  </DialogTitle>
 
+	  <DialogContent>
+		
+		<TextField
+		  id="entry-text"
+		  className="col-12"
+		  label="Entry"
+		  margin="normal"
+		/>
+		
+		<h3>Replies</h3>
+
+		<div className="col-12 reply">
+		  <div className="row">
 			<TextField
-              id="entry-text"
-              className="col-12"
-              label="Entry"
-              margin="normal"
-            />
+			  id="reply"
+			  className="col-12"
+			  label="Reply"
+			  margin="normal"
+			/>
 
-			<h3>Replies</h3>
+			<InputLabel htmlFor="next-entry">Next Entry</InputLabel>
+			<Select
+			  className="col-12"
+			  value={this.state.age}
+			  inputProps={{
+				name: 'next',
+				id: 'next-entry',
+			  }}
+			>
+			  <MenuItem value={10}>Ten</MenuItem>
+			  <MenuItem value={20}>Twenty</MenuItem>
+			  <MenuItem value={30}>Thirty</MenuItem>
+			</Select>
 
-			<div className="col-12">
-			  <div className="row">
-				<TextField
-                  id="reply"
-                  className="col-12"
-                  label="Reply"
-                  margin="normal"
-                />
+			<InputLabel htmlFor="type">Type of reply</InputLabel>
+			<Select
+			  className="col-12"
+			  value={this.state.age}
+			  inputProps={{
+				name: 'type',
+				id: 'type',
+			  }}
+			>
+			  <MenuItem value={10}>Ten</MenuItem>
+			  <MenuItem value={20}>Twenty</MenuItem>
+			  <MenuItem value={30}>Thirty</MenuItem>
+			</Select>
 
-				<InputLabel htmlFor="next-entry">Next Entry</InputLabel>
-				<Select
-				  className="col-12"
-				  value={this.state.age}
-				  inputProps={{
-					name: 'next',
-					id: 'next-entry',
-				  }}
-				>
-				  <MenuItem value={10}>Ten</MenuItem>
-				  <MenuItem value={20}>Twenty</MenuItem>
-				  <MenuItem value={30}>Thirty</MenuItem>
-				</Select>
+			<span className="delete-link col-12">Delete this answer</span>
+		  </div>
+		</div>
+		
+	  </DialogContent>
 
-				<InputLabel htmlFor="type">Type of reply</InputLabel>
-				<Select
-				  className="col-12"
-				  value={this.state.age}
-				  inputProps={{
-					name: 'type',
-					id: 'type',
-				  }}
-				>
-				  <MenuItem value={10}>Ten</MenuItem>
-				  <MenuItem value={20}>Twenty</MenuItem>
-				  <MenuItem value={30}>Thirty</MenuItem>
-				</Select>
-
-				<span className="delete-link">Delete this answer</span>
-			  </div>
-		    </div>
-
-			<div className="row">
-			  <div className="finale-button">
+	  <DialogActions>
+		<div className="finale-button">
 				<button className="main finale-button">Save</button>
 				<button className="empty-solid finale-button">Delete</button>
-			  </div>
-			</div>
-		  </div>
-		 </div>
+		</div>
+	  </DialogActions>
 	  </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Dialog from '@material-ui/core/Dialog';
 import style from "../styles/entry.css";
 
 import * as Scroll from 'react-scroll';
@@ -14,19 +15,26 @@ class EntryList extends React.Component {
     super(props);
 
     this.state = {
+	  open: false,
       list: Object.values(allornothing),
-	  selectedEntry: ''
+	  selectedEntry: ""
     };
 
     this.renderReplies = this.renderReplies.bind(this);
+	this.handleClickOpen = this.handleClickOpen.bind(this);
+	this.handleClose = this.handleClose.bind(this);
   }
+
+  handleClickOpen() {
+    this.setState({ open: true });
+  };
+
+  handleClose() {
+    this.setState({ open: false });
+  };
 
   getSelectedEntry(id) {
 	  this.setState({ selectedEntry: id });
-  }
-
-  getEntry(entry) {
-  	  var toEdit = entry;
   }
 
   renderReplies(entry) {
@@ -61,12 +69,12 @@ class EntryList extends React.Component {
 
             <div className="entry-manage col-12">
               <div className="row">
-				<span className="manage-button">
-				  <i className="fas fa-comments" /> Add new answer
+				<span className="manage-button" onClick={this.handleClickOpen}>
+				  <i className="fas fa-pencil-alt" /> Modify
 				</span>
 
-				<span className="manage-button" data-toggle="modal" data-target="#replyModal" onClick={ () => {this.getSelectedEntry(entry.id)}}>
-				  <i className="fas fa-pencil-alt" /> Modify
+				<span className="manage-button">
+				  <i className="fas fa-trash-alt" /> Remove
 				</span>
 			  </div>
             </div>
@@ -91,12 +99,12 @@ class EntryList extends React.Component {
 
           <div className="entry-manage col-12">
             <div className="row">
-			  <span className="manage-button">
-			    <i className="fas fa-comments" /> Add new answer
+			  <span className="manage-button" onClick={this.handleClickOpen}>
+			    <i className="fas fa-pencil-alt" /> Modify
 			  </span>
 
-			  <span className="manage-button" data-toggle="modal" data-target="#replyModal" onClick={ () => {this.getSelectedEntry(entry.id)}}>
-			    <i className="fas fa-pencil-alt" /> Modify
+			  <span className="manage-button">
+				<i className="fas fa-trash-alt" /> Remove
 			  </span>
 			</div>
           </div>
@@ -117,7 +125,14 @@ class EntryList extends React.Component {
             );
           }.bind(this)
         )}
-		<EditReply selectedEntry={this.state.selectedEntry} />
+		<Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+		  <EditReply selectedEntry={this.state.selectedEntry} />
+		</Dialog>
       </div>
     );
   }
