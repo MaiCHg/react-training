@@ -1,6 +1,5 @@
 import React from "react";
-import axios from "axios";
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from "@material-ui/core/Dialog";
 import style from "../styles/entry.css";
 
 import * as Scroll from 'react-scroll';
