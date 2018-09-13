@@ -14,14 +14,14 @@ class EntryList extends React.Component {
     super(props);
 
     this.state = {
-	  open: false,
+	    open: false,
       list: Object.values(allornothing),
-	  selectedEntry: ""
+	    electedEntry: ""
     };
 
     this.renderReplies = this.renderReplies.bind(this);
-	this.handleClickOpen = this.handleClickOpen.bind(this);
-	this.handleClose = this.handleClose.bind(this);
+	  this.handleClickOpen = this.handleClickOpen.bind(this);
+	  this.handleClose = this.handleClose.bind(this);
   }
 
   handleClickOpen() {
@@ -43,9 +43,9 @@ class EntryList extends React.Component {
 
     return entry.replies.map((reply, idx) => {
       return (
-          <Link to={entry.routes[idx]} spy={true} smooth={true} duration={500} key={idx}>
-			<button className="back" onClick={ () => {this.getSelectedEntry(entry.routes[idx])}}>{reply}</button>
-		  </Link>
+        <Link to={entry.routes[idx]} spy={true} smooth={true} duration={500} key={idx}>
+			    <button className="back" onClick={ () => {this.getSelectedEntry(entry.routes[idx])}}>{reply}</button>
+		    </Link>
       );
     });
   }
@@ -53,7 +53,7 @@ class EntryList extends React.Component {
   getSelectedClass(entry) {
     if (entry.id !== this.state.selectedEntry) {
       return (
-		<Element className="entry col-12" name={entry.id} >
+		    <Element className="entry col-12" name={entry.id} >
           <div className="row">
             <div className="entry-header col-12">
               <div className="entry-id">
@@ -62,15 +62,15 @@ class EntryList extends React.Component {
               <p>{entry.text}</p>
             </div>
 
-			<div className="entry-body col-12">
-			  {this.renderReplies(entry)}
-			</div>
+          <div className="entry-body col-12">
+            {this.renderReplies(entry)}
+          </div>
 
             <div className="entry-manage col-12">
               <div className="row">
-				<span className="manage-button" onClick={this.handleClickOpen}>
-				  <i className="fas fa-pencil-alt" /> Modify
-				</span>
+                <span className="manage-button" onClick={this.handleClickOpen}>
+                  <i className="fas fa-pencil-alt" /> Modify
+                </span>
 
 				<span className="manage-button">
 				  <i className="fas fa-trash-alt" /> Remove

@@ -1,0 +1,4 @@
+export const SELECTED_ENTRY = 'SELECTED_ENTRY'
+export const ADD_ENTRY = 'ADD_ENTRY'
+export const DELETE_ENTRY = 'DELETE_ENTRY'
+export const MODIFY_ENTRY = 'MODIFY_ENTRY'

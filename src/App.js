@@ -46,6 +46,4 @@ const App = () => {
   );
 };
 
-export default hot(module)(App);
-
-ReactDOM.render(<App />, document.getElementById("app"));
+export default App;
